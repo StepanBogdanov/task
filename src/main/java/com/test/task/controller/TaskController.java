@@ -20,8 +20,8 @@ public interface TaskController {
     @DeleteMapping("/{taskId}")
     void deleteTask(@PathVariable("taskId") long taskId);
 
-    @PatchMapping("/{taskId}")
-    void updateTask(@RequestBody TaskDto taskDto, @PathVariable("taskId") long taskId);
+    @PatchMapping("/")
+    void updateTask(@RequestBody TaskDto taskDto);
 
     @PatchMapping("/{taskId}/status")
     void changeTaskStatus(@RequestParam("status") TaskStatus status, @PathVariable("taskId") long taskId);
