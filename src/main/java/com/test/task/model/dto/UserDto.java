@@ -1,24 +1,25 @@
 package com.test.task.model.dto;
 
+import com.test.task.model.enums.UserRole;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDateTime;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CommentDto {
+public class UserDto {
 
     long id;
 
-    UserDto author;
+    String name;
 
-    LocalDateTime created = LocalDateTime.now();
+    String email;
 
-    String content;
+    String password;
+
+    UserRole role;
 }

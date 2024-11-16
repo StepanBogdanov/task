@@ -29,7 +29,7 @@ public class Task {
 
     String description;
 
-    LocalDateTime created = LocalDateTime.now();
+    LocalDateTime created;
 
     @Enumerated(EnumType.STRING)
     TaskStatus status;
@@ -47,5 +47,5 @@ public class Task {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "task_id")
-    List<Comment> comments = new ArrayList<>();
+    List<Comment> comments;
 }
