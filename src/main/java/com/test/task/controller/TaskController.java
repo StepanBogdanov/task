@@ -4,6 +4,7 @@ import com.test.task.model.CriteriaModel;
 import com.test.task.model.dto.CommentDto;
 import com.test.task.model.dto.TaskDto;
 import com.test.task.model.enums.TaskStatus;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,19 +16,19 @@ public interface TaskController {
     ResponseEntity<TaskDto> getTask(@PathVariable("taskId") long taskId);
 
     @PostMapping("/")
-    void createTask(@RequestBody TaskDto taskDto);
+    void createTask(@Valid @RequestBody TaskDto taskDto);
 
     @DeleteMapping("/{taskId}")
     void deleteTask(@PathVariable("taskId") long taskId);
 
     @PatchMapping("/")
-    void updateTask(@RequestBody TaskDto taskDto);
+    void updateTask(@Valid @RequestBody TaskDto taskDto);
 
     @PatchMapping("/{taskId}/status")
     void changeTaskStatus(@RequestParam("status") TaskStatus status, @PathVariable("taskId") long taskId);
 
     @PostMapping("/{taskId}/comment")
-    void addComment(@RequestBody CommentDto commentDto, @PathVariable("taskId") long taskId);
+    void addComment(@Valid @RequestBody CommentDto commentDto, @PathVariable("taskId") long taskId);
 
     @GetMapping("/")
     ResponseEntity<List<TaskDto>> getTasks(@RequestParam(defaultValue = "0") int page,

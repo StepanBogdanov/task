@@ -1,5 +1,6 @@
 package com.test.task.service.impl;
 
+import com.test.task.exception.RequestException;
 import com.test.task.mapper.CommentMapper;
 import com.test.task.mapper.TaskMapper;
 import com.test.task.model.CriteriaModel;
@@ -31,14 +32,13 @@ public class TaskServiceImpl implements TaskService {
     public TaskDto getTask(long taskId) {
         var taskOptional = taskRepository.findById(taskId);
         if (taskOptional.isEmpty()) {
-            //todo: выбросить кастомное исключение
+            throw new RequestException(String.format("Task with ID:%s not found", taskId));
         }
         return taskMapper.toTaskDto(taskOptional.get());
     }
 
     @Override
     public void createTask(TaskDto taskDto) {
-        //todo: validation input
         taskDto.setStatus(TaskStatus.PENDING);
         taskRepository.save(taskMapper.toTask(taskDto));
     }
@@ -50,7 +50,6 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void updateTask(TaskDto taskDto) {
-        //todo: validation input
         taskRepository.save(taskMapper.toTask(taskDto));
     }
 

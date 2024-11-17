@@ -1,5 +1,6 @@
 package com.test.task.repository;
 
+import com.test.task.exception.RequestException;
 import com.test.task.model.CriteriaModel;
 import com.test.task.model.Operation;
 import com.test.task.model.entity.Task;
@@ -46,17 +47,17 @@ public class TaskSpecification implements Specification<Task> {
 
     private void checkCriteria(CriteriaModel criteriaModel) {
         if (criteriaModel.getField().isBlank()) {
-            //todo: custom exception
+            throw new RequestException("The field in the filter must not be empty");
         }
         var operation = criteriaModel.getOperation();
         if (operation == null) {
-            //todo: custom exception
+            throw new RequestException("The operation in the filter must not be empty");
         }
         if ((operation == Operation.LT || operation == Operation.GT) && !criteriaModel.getField().equals("created")) {
-            //todo: custom exception
+            throw new RequestException("The greatThan and lessThan operations can only be applied to the created field");
         }
         if (criteriaModel.getValue() == null) {
-            //todo: custom exception
+            throw new RequestException("The value in the filter must not be empty");
         }
     }
 }
