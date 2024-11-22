@@ -6,6 +6,7 @@ import com.test.task.model.dto.TaskDto;
 import com.test.task.model.enums.TaskStatus;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public interface TaskController {
     void addComment(@Valid @RequestBody CommentDto commentDto, @PathVariable("taskId") long taskId);
 
     @GetMapping("/")
+    @PreAuthorize("hasRole('USER')")
     ResponseEntity<List<TaskDto>> getTasks(@RequestParam(defaultValue = "0") int page,
                                            @RequestParam(defaultValue = "20") int size,
                                            @RequestBody(required = false) CriteriaModel criteriaModel);

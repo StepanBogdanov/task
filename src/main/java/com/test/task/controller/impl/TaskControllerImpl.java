@@ -8,9 +8,11 @@ import com.test.task.model.enums.TaskStatus;
 import com.test.task.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
 @RequiredArgsConstructor
 public class TaskControllerImpl implements TaskController {
 
