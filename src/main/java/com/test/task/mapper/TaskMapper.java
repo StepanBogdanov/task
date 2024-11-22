@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
-        uses = {UserMapper.class, CommentMapper.class},
+        uses = {CommentMapper.class},
         injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface TaskMapper {
 

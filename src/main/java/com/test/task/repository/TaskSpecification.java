@@ -2,14 +2,13 @@ package com.test.task.repository;
 
 import com.test.task.exception.RequestException;
 import com.test.task.model.CriteriaModel;
-import com.test.task.model.Operation;
+import com.test.task.model.entity.Operation;
 import com.test.task.model.entity.Task;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.time.LocalDateTime;

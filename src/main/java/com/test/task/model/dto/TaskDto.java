@@ -35,10 +35,9 @@ public class TaskDto {
     @NotNull(message = "The task is not assigned a priority")
     TaskPriority priority;
 
-    UserDto author;
+    String authorName;
 
-    @NotNull(message = "The task has no assignee")
-    UserDto performer;
+    String performerName;
 
     List<CommentDto> comments = new ArrayList<>();
 }

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: task
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tasks
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa.hibernate.ddl-auto: update
+  liquibase.change-log: classpath:db/liquibase-changelog.xml
+token.signing.key: 53A73E5F1C4E0A2D3B5F2D784E6A1B423D6F247D1F6E5C3A596D635A75327855
+logging.level.org.springframework.security: DEBUG

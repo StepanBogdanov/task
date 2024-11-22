@@ -1,5 +1,6 @@
 package com.test.task.model;
 
+import com.test.task.model.entity.Operation;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;

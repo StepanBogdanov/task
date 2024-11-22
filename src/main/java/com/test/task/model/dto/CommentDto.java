@@ -17,7 +17,7 @@ public class CommentDto {
 
     long id;
 
-    UserDto author;
+    String authorName;
 
     LocalDateTime created = LocalDateTime.now();
 

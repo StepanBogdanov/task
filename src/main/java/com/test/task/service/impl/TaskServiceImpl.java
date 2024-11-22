@@ -26,13 +26,12 @@ public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
     private final TaskMapper taskMapper;
-    private final CommentMapper commentMapper;
 
     @Override
     public TaskDto getTask(long taskId) {
         var taskOptional = taskRepository.findById(taskId);
         if (taskOptional.isEmpty()) {
-            throw new RequestException(String.format("Task with ID:%s not found", taskId));
+            throw new RequestException(String.format("Задача с Id:%s не найдена", taskId));
         }
         return taskMapper.toTaskDto(taskOptional.get());
     }

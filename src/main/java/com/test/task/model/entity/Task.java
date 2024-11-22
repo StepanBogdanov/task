@@ -37,13 +37,9 @@ public class Task {
     @Enumerated(EnumType.STRING)
     TaskPriority priority;
 
-    @ManyToOne
-    @JoinColumn(name = "author_id")
-    User author;
+    String authorName;
 
-    @ManyToOne
-    @JoinColumn(name = "performer_id")
-    User performer;
+    String performerName;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "task_id")
