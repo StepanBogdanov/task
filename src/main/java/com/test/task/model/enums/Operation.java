@@ -1,4 +1,4 @@
-package com.test.task.model.entity;
+package com.test.task.model.enums;
 
 public enum Operation {
     EQ,

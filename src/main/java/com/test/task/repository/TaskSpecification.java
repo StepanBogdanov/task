@@ -2,7 +2,7 @@ package com.test.task.repository;
 
 import com.test.task.exception.RequestException;
 import com.test.task.model.CriteriaModel;
-import com.test.task.model.entity.Operation;
+import com.test.task.model.enums.Operation;
 import com.test.task.model.entity.Task;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;

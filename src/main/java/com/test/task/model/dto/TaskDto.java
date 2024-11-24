@@ -2,6 +2,7 @@ package com.test.task.model.dto;
 
 import com.test.task.model.enums.TaskPriority;
 import com.test.task.model.enums.TaskStatus;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
@@ -22,22 +23,24 @@ public class TaskDto {
 
     long id;
 
-    @Size(min = 10, message = "Task name shorter than 10 characters")
+    @Size(min = 10, max = 50, message = "Название задачи должно содержать от 5 до 50 символов")
+    @NotBlank(message = "Название задачи не может быть пустыми")
     String title;
 
-    @Size(min = 30, message = "Task description shorter than 30 characters")
+    @Size(min = 30, message = "Описание задачи должно содержать не меньше 30 символов")
+    @NotBlank(message = "Описание задачи не может быть пустым")
     String description;
 
     LocalDateTime created = LocalDateTime.now();
 
     TaskStatus status;
 
-    @NotNull(message = "The task is not assigned a priority")
+    @NotNull(message = "Задаче должен быть поставлен приоритет")
     TaskPriority priority;
 
-    String authorName;
+    UserDto author;
 
-    String performerName;
+    UserDto performer;
 
     List<CommentDto> comments = new ArrayList<>();
 }

@@ -17,12 +17,15 @@ public interface TaskController {
     ResponseEntity<TaskDto> getTask(@PathVariable("taskId") long taskId);
 
     @PostMapping("/")
+    @PreAuthorize("hasRole('ADMIN')")
     void createTask(@Valid @RequestBody TaskDto taskDto);
 
     @DeleteMapping("/{taskId}")
+    @PreAuthorize("hasRole('ADMIN')")
     void deleteTask(@PathVariable("taskId") long taskId);
 
     @PatchMapping("/")
+    @PreAuthorize("hasRole('ADMIN')")
     void updateTask(@Valid @RequestBody TaskDto taskDto);
 
     @PatchMapping("/{taskId}/status")
@@ -32,8 +35,11 @@ public interface TaskController {
     void addComment(@Valid @RequestBody CommentDto commentDto, @PathVariable("taskId") long taskId);
 
     @GetMapping("/")
-    @PreAuthorize("hasRole('USER')")
     ResponseEntity<List<TaskDto>> getTasks(@RequestParam(defaultValue = "0") int page,
                                            @RequestParam(defaultValue = "20") int size,
                                            @RequestBody(required = false) CriteriaModel criteriaModel);
+
+    @PatchMapping("/{taskId}/performer")
+    @PreAuthorize("hasRole('ADMIN')")
+    void assignPerformer(@RequestParam("userName") String userName, @PathVariable("taskId") long taskId);
 }

@@ -22,4 +22,6 @@ public interface TaskService {
     void addComment(CommentDto commentDto, long taskId);
 
     List<TaskDto> getTasks(int page, int size, CriteriaModel criteriaModel);
+
+    void assignPerformer(String userName, long taskId);
 }

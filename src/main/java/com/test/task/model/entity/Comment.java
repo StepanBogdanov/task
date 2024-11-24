@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
 
@@ -21,9 +23,16 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    String authorName;
+    @ManyToOne
+    @JoinColumn(name = "author_id", updatable = false)
+    @JdbcTypeCode(SqlTypes.BIGINT)
+    User author;
 
+    @Column(name = "created", updatable = false)
+    @JdbcTypeCode(SqlTypes.TIMESTAMP)
     LocalDateTime created;
 
+    @Column(name = "content")
+    @JdbcTypeCode(SqlTypes.VARCHAR)
     String content;
 }

@@ -1,6 +1,6 @@
 package com.test.task.model;
 
-import com.test.task.model.entity.Operation;
+import com.test.task.model.enums.Operation;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;

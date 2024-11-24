@@ -52,4 +52,9 @@ public class TaskControllerImpl implements TaskController {
     public ResponseEntity<List<TaskDto>> getTasks(int page, int size, CriteriaModel criteriaModel) {
         return ResponseEntity.ok(taskService.getTasks(page, size, criteriaModel));
     }
+
+    @Override
+    public void assignPerformer(String userName, long taskId) {
+        taskService.assignPerformer(userName, taskId);
+    }
 }

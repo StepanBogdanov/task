@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByName(String userName) {
         return userRepository.findUserByName(userName).
-                orElseThrow(() -> new RequestException(String.format("Пользователь с email %s не найден", userName)));
+                orElseThrow(() -> new RequestException(String.format("Пользователь с именем %s не найден", userName)));
     }
 
     @Override
@@ -41,7 +41,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getCurrentUser() {
-        var username = SecurityContextHolder.getContext().getAuthentication().getName();
-        return getUserByName(username);
+        return userRepository.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
     }
 }
