@@ -1,8 +1,11 @@
+server:
+  address: ${TASK_HOST:127.0.0.1}
+  port: ${TASK_PORT:8080}
 spring:
   application:
     name: task
   datasource:
-    url: jdbc:postgresql://localhost:5432/tasks
+    url: jdbc:postgresql://${DB_HOST:127.0.0.1}:${DB_PORT:5432}/tasks
     username: postgres
     password: password
     driver-class-name: org.postgresql.Driver
